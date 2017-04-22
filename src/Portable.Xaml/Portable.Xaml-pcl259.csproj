@@ -53,6 +53,12 @@
     <Compile Include="Portable.Xaml.ComponentModel\TypeConverterAttribute.cs" />
     <Compile Include="Portable.Xaml.ComponentModel\TypeDescriptor.cs" />
     <Compile Include="Portable.Xaml.ComponentModel\TypeConverter.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonReader.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonReaderSettings.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonServices.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonWriter.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonWriterException.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonWriterSettings.cs" />
     <Compile Include="Portable.Xaml.Markup\AmbientAttribute.cs" />
     <Compile Include="Portable.Xaml.Markup\ArrayExtension.cs" />
     <Compile Include="Portable.Xaml.Markup\ConstructorArgumentAttribute.cs" />

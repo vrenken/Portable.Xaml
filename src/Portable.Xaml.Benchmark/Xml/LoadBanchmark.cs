@@ -6,13 +6,13 @@ using System.Linq;
 using BenchmarkDotNet.Attributes.Columns;
 using System.Diagnostics;
 
-namespace Portable.Xaml.Benchmark
+namespace Portable.Xaml.Benchmark.Xml
 {
 	public abstract class LoadBenchmark : IXamlBenchmark
 	{
 		public abstract string TestName { get; }
 
-		protected Stream GetStream() => typeof(IXamlBenchmark).Assembly.GetManifestResourceStream("Portable.Xaml.Benchmark." + TestName);
+		protected Stream GetStream() => typeof(IXamlBenchmark).Assembly.GetManifestResourceStream("Portable.Xaml.Benchmark.Xml." + TestName);
 
 		Portable.Xaml.XamlSchemaContext pxc;
 		[Benchmark(Baseline = true)]

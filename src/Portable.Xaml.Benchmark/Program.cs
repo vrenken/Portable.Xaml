@@ -19,10 +19,12 @@ namespace Portable.Xaml.Benchmark
 			/**  Uncomment to test using performance profiler */
 			if (args?.FirstOrDefault() == "profile")
 			{
-				//var benchmark = new LoadSimpleBenchmark();
-				var benchmark = new LoadComplexBenchmark();
-				//var benchmark = new SaveSimpleBenchmark();
-				//var benchmark = new SaveComplexBenchmark();
+				//var benchmark = new Json.JsonLoadComplexBenchmark();
+				var benchmark = new Json.JsonSaveComplexBenchmark();
+				//var benchmark = new Xml.XmlLoadSimpleBenchmark();
+				//var benchmark = new Xml.XmlLoadComplexBenchmark();
+				//var benchmark = new Xml.XmlSaveSimpleBenchmark();
+				//var benchmark = new Xml.XmlSaveComplexBenchmark();
 				for (int i = 0; i < 1000; i++)
 				{
 					benchmark.PortableXaml();
@@ -38,7 +40,8 @@ namespace Portable.Xaml.Benchmark
 			var types = typeof(MainClass)
 				.Assembly
 				.GetExportedTypes()
-				.Where(r => typeof(IXamlBenchmark).IsAssignableFrom(r) && !r.IsAbstract);
+				.Where(r => typeof(IXamlBenchmark).IsAssignableFrom(r) && !r.IsAbstract)
+				.OrderBy(r => r.Name);
 
 
 			var config = ManualConfig

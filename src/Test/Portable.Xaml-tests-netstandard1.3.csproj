@@ -91,6 +91,7 @@
     <Compile Include="System.Xaml\XamlNodeListTest.cs" />
     <Compile Include="System.Windows.Markup\XamlDeferLoadTest.cs" />
     <Compile Include="System.Xaml\XamlDeferringLoaderTest.cs" />
+    <Compile Include="System.Xaml.Json\JsonWriterTests.cs" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -127,9 +128,13 @@
     <Reference Include="System.ComponentModel.TypeConverter">
       <HintPath>..\packages\System.ComponentModel.TypeConverter.4.3.0\lib\net462\System.ComponentModel.TypeConverter.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="System.Xaml.Json\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

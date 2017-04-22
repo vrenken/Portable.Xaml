@@ -41,6 +41,12 @@
     <Compile Include="Helpers\FlagValue.cs" />
     <Compile Include="Helpers\MemberExpressionExtensions.cs" />
     <Compile Include="Helpers\ReferenceValue.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonReader.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonReaderSettings.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonServices.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonWriter.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonWriterException.cs" />
+    <Compile Include="Portable.Xaml.Json\XamlJsonWriterSettings.cs" />
     <Compile Include="Portable.Xaml\AmbientPropertyValue.cs" />
     <Compile Include="Portable.Xaml\AttachableMemberIdentifier.cs" />
     <Compile Include="Portable.Xaml\AttachablePropertyServices.cs" />

@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using BenchmarkDotNet.Attributes;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using BenchmarkDotNet.Attributes.Columns;
 
-namespace Portable.Xaml.Benchmark
+namespace Portable.Xaml.Benchmark.Xml
 {
 	public abstract class SaveBenchmark : IXamlBenchmark
 	{
@@ -16,8 +16,8 @@ namespace Portable.Xaml.Benchmark
 		public void PortableXaml()
 		{
 			pxc = pxc ?? (pxc = new XamlSchemaContext());
-			using (var stream = new MemoryStream())
-				Portable.Xaml.XamlServices.Save(new Portable.Xaml.XamlXmlWriter(stream, pxc), Instance);
+			using (var writer = new StringWriter())
+				XamlServices.Save(new XamlXmlWriter(writer, pxc), Instance);
 		}
 
 		System.Xaml.XamlSchemaContext sxc;
@@ -25,22 +25,22 @@ namespace Portable.Xaml.Benchmark
 		public void SystemXaml()
 		{
 			sxc = sxc ?? (sxc = new System.Xaml.XamlSchemaContext());
-			using (var stream = new MemoryStream())
-				System.Xaml.XamlServices.Save(new System.Xaml.XamlXmlWriter(stream, sxc), Instance);
+			using (var writer = new StringWriter())
+				System.Xaml.XamlServices.Save(new System.Xaml.XamlXmlWriter(writer, sxc), Instance);
 		}
 
 		[Benchmark]
 		public void PortableXamlNoCache()
 		{
-			using (var stream = new MemoryStream())
-				Portable.Xaml.XamlServices.Save(stream, Instance);
+			using (var writer = new StringWriter())
+				Portable.Xaml.XamlServices.Save(writer, Instance);
 		}
 
 		[Benchmark]
 		public void SystemXamlNoCache()
 		{
-			using (var stream = new MemoryStream())
-				System.Xaml.XamlServices.Save(stream, Instance);
+			using (var writer = new StringWriter())
+				System.Xaml.XamlServices.Save(writer, Instance);
 		}
 	}
 }

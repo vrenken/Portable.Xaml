@@ -75,6 +75,7 @@ namespace Portable.Xaml
 				public const int IsGetObject = 1 << 0;
 				public const int IsInstantiated = 1 << 1;
 				public const int IsXamlWriterCreated = 1 << 2;
+				public const int HasSeparator = 1 << 3;
 			}
 
 			public bool IsGetObject
@@ -91,6 +92,11 @@ namespace Portable.Xaml
 			{
 				get { return _flags.Get(ObjectStateFlags.IsXamlWriterCreated) ?? false; }
 				set { _flags.Set(ObjectStateFlags.IsXamlWriterCreated, value); }
+			}
+			public bool HasSeparator
+			{
+				get { return _flags.Get(ObjectStateFlags.HasSeparator) ?? false; }
+				set { _flags.Set(ObjectStateFlags.HasSeparator, value); }
 			}
 
 			public int PositionalParameterIndex = -1;

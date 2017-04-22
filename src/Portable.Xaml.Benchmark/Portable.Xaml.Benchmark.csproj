@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -30,6 +29,8 @@
     <WarningLevel>4</WarningLevel>
     <ExternalConsole>true</ExternalConsole>
     <Prefer32Bit>true</Prefer32Bit>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BenchmarkDotNet, Version=0.10.6.0, Culture=neutral, PublicKeyToken=aa0ca2f9092cefc4, processorArchitecture=MSIL">
@@ -121,9 +122,17 @@
     <Reference Include="System.Reflection.Metadata, Version=1.4.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Reflection.Metadata.1.4.2\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Security.Cryptography.Algorithms">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net46\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net46\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\System.Net.Http.4.3.1\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.3.0\lib\net46\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -165,23 +174,33 @@
     <Reference Include="System.Xml.XPath.XDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Xml.XPath.XDocument.4.3.0\lib\net46\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Json\SaveBenchmark.cs" />
+    <Compile Include="Json\JsonSaveComplexBenchmark.cs" />
+    <Compile Include="Json\JsonSaveSimpleBenchmark.cs" />
+    <Compile Include="SaveXamlVsJsonBenchmark.cs" />
+    <Compile Include="LoadXamlVsJsonBenchmark.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LoadBenchmark.cs" />
+    <Compile Include="Xml\LoadBanchmark.cs" />
     <Compile Include="TestObject.cs" />
-    <Compile Include="LoadSimpleBenchmark.cs" />
-    <Compile Include="LoadComplexBenchmark.cs" />
-    <Compile Include="SaveBenchmark.cs" />
+    <Compile Include="Xml\XmlLoadComplexBenchmark.cs" />
+    <Compile Include="Xml\SaveBenchmark.cs" />
     <Compile Include="XamlBenchmark.cs" />
-    <Compile Include="SaveSimpleBenchmark.cs" />
-    <Compile Include="SaveComplexBenchmark.cs" />
+    <Compile Include="Xml\XmlSaveSimpleBenchmark.cs" />
+    <Compile Include="Xml\XmlSaveComplexBenchmark.cs" />
+    <Compile Include="Json\JsonLoadSimpleBenchmark.cs" />
+    <Compile Include="Json\LoadBenchmark.cs" />
+    <Compile Include="Json\JsonLoadComplexBenchmark.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Portable.Xaml\Portable.Xaml-pcl259.csproj">
-      <Project>{179484EC-DB00-451A-AD2D-2E2AB20DE519}</Project>
-      <Name>Portable.Xaml-pcl259</Name>
+    <ProjectReference Include="..\Portable.Xaml\Portable.Xaml-netstandard1.3.csproj">
+      <Project>{CDC8F791-56FC-4B15-AAD2-BC460657CC02}</Project>
+      <Name>Portable.Xaml-netstandard1.3</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -189,10 +208,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="LoadSimpleBenchmark.xml">
+    <EmbeddedResource Include="Xml\XmlLoadSimpleBenchmark.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoadComplexBenchmark.xml">
+    <EmbeddedResource Include="Xml\XmlLoadComplexBenchmark.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Json\JsonLoadSimpleBenchmark.json">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Xml\XmlLoadSimpleBenchmark.cs" />
+    <EmbeddedResource Include="Json\JsonLoadComplexBenchmark.json">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
