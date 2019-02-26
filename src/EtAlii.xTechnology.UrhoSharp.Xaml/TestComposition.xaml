@@ -1,0 +1,6 @@
+<x:Type
+  Type="Composition"
+  xmlns="clr-namespace:EtAlii.xTechnology.UrhoSharp.Xaml;assembly=EtAlii.xTechnology.UrhoSharp.Xaml"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+  
+</x:Type>
