@@ -17,6 +17,19 @@ namespace EtAlii.xTechnology.UrhoSharp.Xaml
 		[ConstructorArgument("arg2")]
 		public string Bar { get; set; }
 
+		[ConstructorArgument("path")]
+		public string Path { get; set; }
+
+		[ConstructorArgument("converter")]
+		public string Converter { get; set; }
+
+		[ConstructorArgument("converterParameter")]
+		public string ConverterParameter { get; set; }
+
+		[ConstructorArgument("mode")]
+		public string Mode { get; set; }
+
+
 		public override object ProvideValue(IServiceProvider provider)
 		{
 			return "provided_value";
